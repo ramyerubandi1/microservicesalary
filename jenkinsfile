@@ -16,7 +16,7 @@ pipeline {
           }
        }
     }
-    stage('login to ecr')
+    stage('login to ecr'){
       steps {
         script  {
             sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb'
@@ -42,5 +42,6 @@ post {
             echo 'Pipeline failed.'
         }
     }
+}
 }
   
