@@ -4,7 +4,7 @@ pipeline {
      stage('checkout') {
        steps {
           script {
-             sh 'microservicesalary'
+             sh 'rm -rf microservicesalary'
              sh 'git clone -b main https://github.com/ramyerubandi1/microservicesalary.git'
           }
       }
