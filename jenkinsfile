@@ -3,6 +3,7 @@ pipeline {
     stages {
      stage('checkout') {
        steps {
+          script {
              sh 'git clone -b main https://github.com/ramyerubandi1/microservicesalary.git'
           }
       }
@@ -22,6 +23,5 @@ pipeline {
        }
    }
 }
-
 
   
