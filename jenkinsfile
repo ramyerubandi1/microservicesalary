@@ -3,23 +3,23 @@ pipeline {
     stages {
      stage('checkout') {
        steps {
-          sh 'git clone -b main https://github.com/ramyerubandi1/microservicesalary.git'
-        }
-}
-}
-stage('Build Docker Image') {
-steps {
-script {
-sh 'docker build -t salary-app .'
-}
-}
-}
-stage('push docker image') {
-steps { 
-sh 'docker tag salary-app:latest 024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb:latest'
-sh '024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb:latest'
-}
-}
-}
+             sh 'git clone -b main https://github.com/ramyerubandi1/microservicesalary.git'
+          }
+      }
+    }
+    stage('Build Docker Image') {
+    steps {
+    script {
+    sh 'docker build -t salary-app .'
+    }
+    }
+    }
+    stage('push docker image') {
+    steps { 
+    sh 'docker tag salary-app:latest 024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb:latest'
+    sh '024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb:latest'
+     }
+     }
+     }
 
   
