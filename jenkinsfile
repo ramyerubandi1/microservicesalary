@@ -7,7 +7,7 @@ pipeline {
         }
 }
 }
-stage('build docker image') {
+stage('Build Docker Image') {
 steps {
 script {
 sh 'docker build -t salary-app .'
