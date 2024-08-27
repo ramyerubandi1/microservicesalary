@@ -3,7 +3,7 @@ pipeline {
     stages {
      stage('checkout') {
        steps {
-          script {
+           {
              sh 'rm -rf microservicesalary'
              sh 'git clone -b main https://github.com/ramyerubandi1/microservicesalary.git'
           }
@@ -11,13 +11,21 @@ pipeline {
     }
     stage('Build Docker Image') {
       steps {
-        script {
+        {
            sh 'docker build -t salary-app .'
           }
        }
     }
+    stage('login to ecr')
+      steps {
+        script  {
+            sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb'
+            }
+         }
+      }
     stage('push docker image') {
         steps { 
+          script{
            sh 'docker tag salary-app:latest 024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb:latest'
            sh '024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb:latest'
          }
